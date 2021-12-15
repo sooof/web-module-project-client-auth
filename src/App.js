@@ -23,7 +23,7 @@ function App() {
           </li>
         </ul>
         <Switch>
-          <Route exact path="/friendslist" component={FriendsList} />
+          <Route exact path="/friends" component={FriendsList} />
           <Route path="/logout" component={Logout} />
           <Route path="/login" component={Login} />
           <Route path="/" component={Login} />    
