@@ -27,6 +27,8 @@ const Login = () => {
         axios.post('http://localhost:9000/api/login', value)
         .then(resp=> {
           console.log(resp);
+          const { token } = resp.data;
+          localStorage.setItem("token", token);
         })
         .catch(err => {
           console.log(err);
@@ -49,6 +51,15 @@ const Login = () => {
             value={value.password}
             onChange={handleChange}
           />
+
+        <label> Role:
+            <select name="role" onChange={handleChange}>
+                <option value="">---Select your role---</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+        </label>
+
           <button>Log in</button>
         </form>
       </div>
