@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-const Login = () => {
+const Login = (props) => {
     const initatate =   {  
         username: '',
         password: '',
@@ -29,6 +29,7 @@ const Login = () => {
           console.log(resp);
           const { token } = resp.data;
           localStorage.setItem("token", token);
+          props.history.push('/friends');
         })
         .catch(err => {
           console.log(err);

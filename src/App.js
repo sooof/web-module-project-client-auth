@@ -19,7 +19,7 @@ function App() {
           <Link to="/logout">Logout</Link>
           </li>
           <li>
-          <Link to="/friendslist">FriendsList</Link>
+          <Link to="/friends">FriendsList</Link>
           </li>
         </ul>
         <Switch>
