@@ -7,8 +7,11 @@ import FriendsList from './components/FriendsList';
 import Friend from './components/Friend';
 import AddFriend from './components/AddFriend';
 
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
+  const isLoggedIn = localStorage.getItem('token');
+  
   return (
     <Router>
       <div className="App">
@@ -21,15 +24,15 @@ function App() {
           <Link to="/logout">Logout</Link>
           </li>
           <li>
-          <Link to="/friends">FriendsList</Link>
+          {isLoggedIn && <Link to="/friends">FriendsList</Link>}
           </li>
           <li>
-          <Link to="/add">AddFriend</Link>
+         { isLoggedIn && <Link to="/add">AddFriend</Link>}
           </li>
         </ul>
         <Switch>
           <Route path="/friends/:id"   component={Friend} /> 
-          <Route  path="/friends" component={FriendsList} />
+          <PrivateRoute  path="/friends" component={FriendsList} />
           <Route  path="/add" component={AddFriend} />
           <Route path="/logout" component={Logout} />
           <Route path="/login" component={Login} />
