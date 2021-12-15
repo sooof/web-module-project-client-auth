@@ -19,9 +19,6 @@ const FriendsList = (props) => {
           .then(resp=> {
             // console.log("FriendsList", resp.data)
             setFriends(resp.data)
-            // this.setState({
-            //   gasPrices: resp.data.data
-            // });
           })
           .catch(err=> {
             console.log(err.response.data);
