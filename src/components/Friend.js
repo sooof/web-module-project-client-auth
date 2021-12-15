@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams} from 'react-router-dom';
 import axios from 'axios';
-
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const Friend = (props) => {
     const [friend, setFriend] = useState([])
@@ -10,11 +10,13 @@ const Friend = (props) => {
     useEffect(()=>{
         const token = localStorage.getItem("token");
 
-        axios.get(`http://localhost:9000/api/friends/${id}`, {
-          headers: {
-            authorization: token
-          }
-        })
+        // axios.get(`http://localhost:9000/api/friends/${id}`, {
+        //   headers: {
+        //     authorization: token
+        //   }
+        // })
+        axiosWithAuth()
+        .get(`/friends/${id}`)
           .then(resp=> {
             console.log("Friend", resp.data)
             setFriend(resp.data)
@@ -27,11 +29,11 @@ const Friend = (props) => {
 
     return (
         <div>
-            <h1>Friend {id}</h1>
-            <h3>Name :{friend.name}</h3>
+            {/* <h1>Friend {id}</h1> */}
+            {/* <h3>Name :{friend.name}</h3> */}
 
 
-            {/* <h3>Name :{props.friend.name}</h3> */}
+            <h3>Name :{props.friend.name}</h3>
             {/* <p>age: {props.friend.age}</p> */}
             {/* <p>email:{props.friend.email}</p> */}
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const AddFriend = (props) => {
     const initatate = {
@@ -22,11 +23,13 @@ const AddFriend = (props) => {
         const token = localStorage.getItem("token");
         // console.log("login")
         // axios.post('http://localhost:9000/api/articles', )
-        axios.post('http://localhost:9000/api/friends',newValue, {
-            headers: {
-              authorization: token
-            }
-          })
+        // axios.post('http://localhost:9000/api/friends',newValue, {
+        //     headers: {
+        //       authorization: token
+        //     }
+        //   })
+        axiosWithAuth()
+        .post(`/friends`, newValue)
         .then(resp=> {
           console.log(resp);
           props.history.push('/friends');
@@ -74,7 +77,7 @@ const AddFriend = (props) => {
 
           
 
-                <button>Log in</button>
+                <button>Add Friend</button>
                 </form>
             </div>
     </div>
